@@ -1,5 +1,5 @@
-import { sendEmailReplyOnTicket } from "./ticket-send-email.js";
-import { sendInternalNoteOnTicket } from "./ticket-send-internal-note.js";
+import { sendEmailReplyOnTicket } from "./ticket-functions/send-email.js";
+import { sendInternalNoteOnTicket } from "./ticket-functions/send-internal-note.js";
 
 const ticketID = "2017233";
 const token = process.env.API_TOKEN;
@@ -10,4 +10,4 @@ const emailBody =
 
 sendEmailReplyOnTicket(ticketID, fromEmail, emailBody, token);
 
-sendInternalNoteOnTicket(ticketID, fromEmail, emailBody, token);
+// sendInternalNoteOnTicket(ticketID, fromEmail, emailBody, token);

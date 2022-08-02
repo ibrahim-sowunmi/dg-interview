@@ -1,9 +1,9 @@
 import "dotenv/config";
 import axios from "axios";
-import { handleErrorResponse } from "./errors.js";
+import { handleErrorResponse } from "../errors.js";
 
 /**
- * Sent an internal note on a ticket.
+ * Send an internal note on a ticket.
  * @param {string} ticketId - Id of the ticket we are attaching our message
  * @param {string} userEmail - Email being used to send the body from 
  * @param {string} emailBody - Body of the message to send the note
