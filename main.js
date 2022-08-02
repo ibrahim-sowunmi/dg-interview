@@ -1,13 +1,17 @@
-import { sendEmailReplyOnTicket } from "./ticket-functions/send-email.js";
+import { EMAIL_BODY, TICKET_ID } from "./config.js";
+import { sendEmailAndLog } from "./ticket-functions/send-email.js";
 import { sendInternalNoteOnTicket } from "./ticket-functions/send-internal-note.js";
 
-const ticketID = "2017233";
-const token = process.env.API_TOKEN;
+const ticketID = TICKET_ID;
 const fromEmail = process.env.TEST_EMAIL;
-const emailBody =
-  "Hello,\n\n        I can't place an order on your site, it says: I don't have enough credit.\n        How can I add some credits?\n\n        Cheers,\n        John Doe\n        ";
+const emailBody = EMAIL_BODY;
+const token = process.env.API_TOKEN;
 
+// Part 1
 
-sendEmailReplyOnTicket(ticketID, fromEmail, emailBody, token);
+sendEmailAndLog(ticketID, fromEmail, emailBody, token);
 
-// sendInternalNoteOnTicket(ticketID, fromEmail, emailBody, token);
+// Part 2
+
+sendInternalNoteOnTicket(ticketID, fromEmail, emailBody, token);
+
