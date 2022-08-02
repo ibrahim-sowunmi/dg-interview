@@ -10,13 +10,11 @@ Dependencies and Installation
 
 3. Add a test email password in .env file
 
-4. Add an email or create another env variable in Gmail helper 
+4. Add an email or create another .env variable in Gmail helper 
 
 ```
 TEST_EMAIL_PASS="random16characterstring"
 ```
-
-4. 
 
 ## Install node > 17.0.x
 
@@ -53,8 +51,6 @@ node main.js
 * Unwrap all other responses for a ticket when sending an email (email chain) with better formatting (sender, date time, grouping)
 * Pass in the Axios instance as a parameter one time instead of constant instantiation
 * Ability to differentiate between agents from email support
-* Store hard-coded variables in config files
-* pass assignee_user data when sending emails 
 * Cross-reference if customer/agent data exists within the Gorgias before sending Email or posting an internal ticket
 * Use js middleware to make promise handling cleaner
 
