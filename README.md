@@ -12,7 +12,7 @@ Dependencies and Installation
 > npm i
 ```
 
-3. Store test user email, API token & base URL in environment variables. Store in a .env file (example below)
+3. Store test user email, API token & base URL in environment variables. Store in a .env file (example below)(sharing information that should normally never be shared!!)
 
 ```
 API_TOKEN="aS5zb3d1bm1pOTdAZ21haWwuY29tOjY3MjA2NmM5ZDEwYThlNGIxNDdmNjdjODQwMTE0NTIwNjdkZDg4YTQ1MGZkMTc4ZjgyY2IwMmZmZmRiZjI5NGM="
