@@ -3,7 +3,7 @@ import axios from "axios";
 
 import { handleErrorResponse } from "../errors.js";
 import { processEmail } from "../gmail-helper.js";
-import { FROM_NAME, TO_EMAIL, TO_NAME } from "../config.js";
+import { FROM_EMAIL, FROM_NAME, TO_EMAIL, TO_NAME } from "../config.js";
 
 /**
  * Sends an Email and Logs activity in Gorgias on ticket
@@ -28,6 +28,11 @@ export async function sendEmailAndLog(
     },
   });
 
+  const testCall = async (ticketId) => {
+    const response = await instance.get(`/api/tickets/${ticketId}`);
+    return response.data.customer.email;
+  };
+
   // get ticket data and pass to other functions
   instance
     .get(`/api/tickets/${ticketId}`)
@@ -35,16 +40,18 @@ export async function sendEmailAndLog(
     .then((data) => {
       let { subject, customer, messages } = data;
       // Send email to customer with email thread from ticket
-      processEmail(fromEmail, customer.email, subject, emailBody, messages);
+      // processEmail(fromEmail, customer.email, subject, emailBody, messages);
+      // console.log(data);
     })
     .catch((err) => handleErrorResponse(err));
+
 
   // Log email on ticket
   instance
     .post(`/api/tickets/${ticketId}/messages`, {
       source: {
-        to: [{ name: TO_NAME, address: TO_EMAIL }],
-        from: { name: FROM_NAME, address: `${fromEmail}` },
+        to: [{ name: TO_NAME, address: await testCall(ticketId) }],
+        from: { name: FROM_NAME, address: FROM_EMAIL},
         type: "email",
       },
       via: "email",
@@ -52,6 +59,6 @@ export async function sendEmailAndLog(
       channel: "email",
       body_text: `${emailBody}`,
     })
-    .then((res) => console.log("Ticket Activity Logged!"))
+    .then((res) => console.log(res.data))
     .catch((err) => handleErrorResponse(err));
 }

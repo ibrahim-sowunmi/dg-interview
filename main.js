@@ -13,5 +13,5 @@ sendEmailAndLog(ticketID, fromEmail, emailBody, token);
 
 // Part 2
 
-sendInternalNoteOnTicket(ticketID, fromEmail, emailBody, token);
+// sendInternalNoteOnTicket(ticketID, fromEmail, emailBody, token);
 
